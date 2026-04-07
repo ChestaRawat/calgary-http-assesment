@@ -1,0 +1,92 @@
+﻿Hi, my name is Chesta Rawat, and in this project I worked on analyzing real-world web server log data using Python.
+The dataset I used is the Calgary HTTP Dataset, which contains nearly one year of web server logs from the University of Calgary. The goal of this project was to process raw log data, clean and structure it, and extract meaningful insights using Python.
+Project Overview
+This project is divided into two main parts:
+1. Data Loading and Cleaning
+2. Data Analysis and Insights
+I built a complete pipeline starting from downloading raw data to generating structured insights.
+
+
+Step 1: Importing Required Libraries
+I imported several libraries:
+* gzip for handling compressed files
+* requests for downloading data
+* re for parsing logs using regular expressions
+* datetime for time-based analysis
+* pandas for data manipulation
+
+
+Step 2: Downloading the Dataset
+I created a reusable function to download the dataset directly from a URL.
+This function sends an HTTP request, streams the data in chunks, and saves it locally as a .gz file.
+This makes the pipeline automated and reusable.
+
+
+Step 3: Loading the Data
+Since the dataset is compressed, I used the gzip module to read the file.
+The function reads each log line and stores it in a list.
+At this stage, the data is still unstructured raw text.
+Step 4: Parsing the Logs
+This is one of the most important steps.
+I used regular expressions to extract structured fields from each log entry, including:
+* Host/IP address
+* Timestamp
+* HTTP method (GET, POST)
+* Resource requested
+* Protocol
+* Status code
+* Bytes transferred
+This converts raw logs into structured records for analysis.
+Step 5: Data Cleaning
+After parsing, I cleaned the data to ensure accuracy:
+* Converted timestamps into proper datetime format using pandas
+* Converted status codes and bytes into numeric values
+* Handled missing values (filled bytes with 0 where needed)
+* Removed invalid or corrupted records
+This ensured reliable and error-free analysis.
+
+
+Step 6: Data Analysis
+I performed multiple analyses, such as:
+* Total number of log records
+* Frequency of HTTP status codes
+* Most requested resources
+* Traffic patterns over time
+
+
+Key Results
+* Total number of records: 72,241
+* Count of unique hosts using .nunique()
+* Date-wise request counts using groupby
+* Number of 404 errors using filtering and .sum()
+* Top 15 files generating 404 errors using .value_counts().head(15)
+* Daily traffic (bytes transferred) for July 1995
+* Hourly request distribution
+* Top 10 most requested resources
+* HTTP response code distribution
+
+
+Key Insights
+* Identified frequently accessed resources
+* Observed peak traffic times
+* Analyzed error trends like 404 and 500 errors
+* Understood user behavior and server load
+These insights are useful for:
+* Performance optimization
+* Debugging issues
+* Capacity planning
+
+
+Challenges & Learnings
+Some challenges I faced:
+* Handling unstructured log data
+* Writing accurate regex patterns
+* Cleaning inconsistent data
+Through this project, I improved:
+* Data cleaning skills
+* Regex usage
+* Real-world data analysis techniques
+Conclusion
+This project demonstrates how raw data can be transformed into meaningful insights using Python.
+It showcases my understanding of data engineering basics, data cleaning, and analytical thinking.
+Thank you for watching!
